@@ -1,0 +1,31 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 30px 15px;
+  margin-bottom: 30px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 16px 7px rgba(34, 60, 80, 0.27);
+
+}
+
+h3 {
+  margin: 0 0 30px 0;
+}
+
+input {
+    margin-bottom: 30px;
+}
+
+.addContactBtn {
+  font-size: 17px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  transition: 70ms all ease;
+}
+
+.addContactBtn:active {
+  background-color: red;
+  color: aliceblue;
+  border: 1px solid red;
+}
