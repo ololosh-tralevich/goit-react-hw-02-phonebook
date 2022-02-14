@@ -1,18 +1,27 @@
-import { nanoid } from 'nanoid'
-
+import { nanoid } from 'nanoid';
 
 import styles from './contactList.module.css';
 
-const ContactList = ({ contacts }) => {
-  console.log(contacts)
+const ContactList = ({ contacts, filter }) => {
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter)
+  );
 
-  const partOfCode = contacts.map(contact => {
-    return <li key={nanoid()}>{contact.name}: {contact.number}</li>
-  })
+  const partOfCode = filteredContacts.map(contact => {
+    return (
+      <li key={nanoid()}>
+        {contact.name}: {contact.number}
+      </li>
+    );
+  });
+
+  // const partOfCode = contacts.filter(contact => {
+  //   console.log(contact);
+  // });
+  // console.log(partOfCode);
 
   return (
     <div className={styles.mainContainer}>
-      <h2>Contacts</h2>
       <ul>{partOfCode}</ul>
     </div>
   );
