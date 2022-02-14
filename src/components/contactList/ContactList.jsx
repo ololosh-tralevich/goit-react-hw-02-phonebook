@@ -1,24 +1,21 @@
-import { nanoid } from 'nanoid';
-
 import styles from './contactList.module.css';
 
-const ContactList = ({ contacts, filter }) => {
+const ContactList = ({ contacts, filter ,deleteContactBtn}) => {
   const filteredContacts = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter)
   );
 
   const partOfCode = filteredContacts.map(contact => {
     return (
-      <li key={nanoid()}>
-        {contact.name}: {contact.number}
+      <li className={styles.listItem} key={contact.id}>
+        <button className={styles.removeContactBtn} onClick={deleteContactBtn} id={contact.id}>Delete</button>
+        <span className={styles.listDash}>&#8212;</span>
+        <p>
+          {contact.name}: {contact.number}
+        </p>
       </li>
     );
   });
-
-  // const partOfCode = contacts.filter(contact => {
-  //   console.log(contact);
-  // });
-  // console.log(partOfCode);
 
   return (
     <div className={styles.mainContainer}>

@@ -7,13 +7,4 @@
 
 .addContactBtn {
   font-size: 17px;
-  border-radius: 5px;
-  border: 1px solid grey;
-  transition: 70ms all ease;
-}
-
-.addContactBtn:active {
-  background-color: red;
-  color: aliceblue;
-  border: 1px solid red;
 }

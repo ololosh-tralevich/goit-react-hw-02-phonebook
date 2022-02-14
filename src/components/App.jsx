@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { nanoid } from 'nanoid';
 
 import ContactForm from './contactForm/ContactForm';
 import Filter from './filter/Filter';
@@ -28,12 +29,34 @@ export class App extends Component {
   }
 
   addContactBtn() {
+    for (let contact of this.state.contacts) {
+      if (
+        contact.name === this.state.name ||
+        contact.number === this.state.number
+      ) {
+        console.log('found clone');
+        alert(`${this.state.name} is already in your contacts`);
+        return;
+      }
+    }
     this.setState(prevState => {
       return {
         contacts: [
           ...prevState.contacts,
-          { name: prevState.name, number: prevState.number },
+          { id: nanoid(), name: prevState.name, number: prevState.number },
         ],
+      };
+    });
+  }
+
+  deleteContactBtn(ev) {
+    console.log(ev.target.id);
+    this.setState(prevState => {
+      console.log(prevState.contacts);
+      return {
+        contacts: prevState.contacts.filter(
+          contact => contact.id !== ev.target.id
+        ),
       };
     });
   }
@@ -42,7 +65,6 @@ export class App extends Component {
     return (
       <div className={styles.mainContainer}>
         <div className={styles.contactContainer}>
-          <h3>Name</h3>
           <ContactForm
             typeContactData={this.typeContactData.bind(this)}
             addContactBtn={this.addContactBtn.bind(this)}
@@ -52,7 +74,11 @@ export class App extends Component {
         <div className={styles.listContainer}>
           <h2>Contacts</h2>
           <Filter typeContactData={this.typeContactData.bind(this)} />
-          <ContactList contacts={this.state.contacts} filter={this.state.filter} />
+          <ContactList
+            deleteContactBtn={this.deleteContactBtn.bind(this)}
+            contacts={this.state.contacts}
+            filter={this.state.filter}
+          />
         </div>
       </div>
     );

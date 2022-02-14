@@ -22,30 +22,40 @@ div#root {
 
 button {
   cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid grey;
+  transition: 70ms all ease;
+}
+
+button:active {
+  background-color: red;
+  color: aliceblue;
+  border: 1px solid red;
 }
 
 h2 {
   margin: 0 0 15px 0;
 }
 
-ul {
-  text-align: start;
-  padding-left: 15px;
-  margin: 0;
-}
-
-li {
-  margin-bottom: 5px;
-}
-
-li:last-child {
-  margin-bottom: 0;
-}
-
 h3 {
   margin: 0 0 30px 0;
 }
 
+h4 {
+  margin: 0 0 3px 0;
+}
+
+ul {
+  text-align: start;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
 input {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+p {
+  margin: 0;
 }

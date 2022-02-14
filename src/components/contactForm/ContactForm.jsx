@@ -3,6 +3,7 @@ import styles from './contactForm.module.css';
 const ContactForm = ({ typeContactData, addContactBtn }) => {
   return (
     <div className={styles.mainContainer}>
+      <h4>Name:</h4>
       <input
         type="text"
         name="name"
@@ -11,6 +12,8 @@ const ContactForm = ({ typeContactData, addContactBtn }) => {
         required
         onChange={typeContactData}
       />
+      <h4>Number:</h4>
+      
       <input
         type="tel"
         name="number"
