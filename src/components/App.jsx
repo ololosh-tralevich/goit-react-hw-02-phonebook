@@ -50,7 +50,6 @@ export class App extends Component {
   }
 
   deleteContactBtn(ev) {
-    console.log(ev.target.id);
     this.setState(prevState => {
       console.log(prevState.contacts);
       return {
