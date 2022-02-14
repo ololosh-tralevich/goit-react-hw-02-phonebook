@@ -34,7 +34,6 @@ export class App extends Component {
         contact.name === this.state.name ||
         contact.number === this.state.number
       ) {
-        console.log('found clone');
         alert(`${this.state.name} is already in your contacts`);
         return;
       }
