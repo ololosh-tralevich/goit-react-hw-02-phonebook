@@ -1,18 +1,21 @@
-import {Options} from '../App';
+import { nanoid } from 'nanoid'
+
 
 import styles from './contactList.module.css';
 
-class ContactList extends Options {
-  // const ContactList = (state) => {
+const ContactList = ({ contacts }) => {
+  console.log(contacts)
 
-  render() {
-    console.log(this.state);
-    return (
-      <div className={styles.mainContainer}>
-        <h2>Contacts</h2>
-      </div>
-    );
-  }
-}
+  const partOfCode = contacts.map(contact => {
+    return <li key={nanoid()}>{contact.name}: {contact.number}</li>
+  })
+
+  return (
+    <div className={styles.mainContainer}>
+      <h2>Contacts</h2>
+      <ul>{partOfCode}</ul>
+    </div>
+  );
+};
 
 export default ContactList;
