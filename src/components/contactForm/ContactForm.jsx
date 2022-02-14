@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import styles from './contactForm.module.css';
 
 const ContactForm = ({ typeContactData, addContactBtn }) => {
@@ -32,3 +34,8 @@ const ContactForm = ({ typeContactData, addContactBtn }) => {
 };
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  typeContactData: PropTypes.func.isRequired,
+  addContactBtn: PropTypes.func.isRequired,
+};

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Filter = ({ typeContactData }) => {
   return (
     <>
@@ -15,3 +17,7 @@ const Filter = ({ typeContactData }) => {
 };
 
 export default Filter;
+
+Filter.propTypes = {
+  typeContactData: PropTypes.func.isRequired,
+};
