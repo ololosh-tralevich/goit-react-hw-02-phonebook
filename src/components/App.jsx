@@ -51,7 +51,6 @@ export class App extends Component {
 
   deleteContactBtn(ev) {
     this.setState(prevState => {
-      console.log(prevState.contacts);
       return {
         contacts: prevState.contacts.filter(
           contact => contact.id !== ev.target.id
