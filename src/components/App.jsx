@@ -20,28 +20,22 @@ export class App extends Component {
     });
   }
 
-  addContactBtn() {
+  addContactBtn = ({ name, number }) => {
     const clone = this.state.contacts.find(
       clone =>
-        clone.name === this.state.name || clone.number === this.state.number
+        clone.name === name || clone.number === number
     );
     this.setState(prevState => {
       return clone
-        ? alert(`${this.state.name} is already in your contacts`)
+        ? alert(`${name} is already in your contacts`)
         : {
             contacts: [
               ...prevState.contacts,
-              { id: nanoid(), name: prevState.name, number: prevState.number },
+              { id: nanoid(), name: name, number: number },
             ],
           };
     });
   }
-
-  // findCloneContact(name) {
-  //   console.log(name)
-  //   console.log(this.state.contacts)
-  //   return  this.state.contact === name;
-  // }
 
   deleteContactBtn(ev) {
     this.setState(prevState => {
@@ -59,7 +53,8 @@ export class App extends Component {
         <div className={styles.contactContainer}>
           <ContactForm
             typeContactData={this.typeContactData.bind(this)}
-            addContactBtn={this.addContactBtn.bind(this)}
+            // addContactBtn={this.addContactBtn.bind(this)}
+            onSubmit={this.addContactBtn}
           />
         </div>
 
