@@ -37,11 +37,11 @@ export class App extends Component {
     });
   }
 
-  deleteContactBtn(ev) {
+  deleteContactBtn(id) {
     this.setState(prevState => {
       return {
         contacts: prevState.contacts.filter(
-          contact => contact.id !== ev.target.id
+          contact => contact.id !== id
         ),
       };
     });
@@ -53,7 +53,6 @@ export class App extends Component {
         <div className={styles.contactContainer}>
           <ContactForm
             typeContactData={this.typeContactData.bind(this)}
-            // addContactBtn={this.addContactBtn.bind(this)}
             onSubmit={this.addContactBtn}
           />
         </div>

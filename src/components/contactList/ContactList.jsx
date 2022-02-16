@@ -12,7 +12,8 @@ const ContactList = ({ contacts, filter, deleteContactBtn }) => {
       <li className={styles.listItem} key={contact.id}>
         <button
           className={styles.removeContactBtn}
-          onClick={deleteContactBtn}
+          // onClick={deleteContactBtn}
+          onClick={() => deleteContactBtn(contact.id)}
           id={contact.id}
         >
           Delete

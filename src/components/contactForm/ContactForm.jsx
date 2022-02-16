@@ -12,14 +12,8 @@ class ContactForm extends Component {
 
   onSubmitForm = ev => {
     ev.preventDefault();
-    // const { name, number } = ev.target;
-    // this.setState({
-    //   name: name.value,
-    //   number: number.value,
-    // });
     this.props.onSubmit(this.state);
-    // console.log(name.value);
-    // this.resetForm(ev);
+    this.resetForm(ev);
   };
 
   onChangeForm = ev => {
@@ -70,6 +64,5 @@ class ContactForm extends Component {
 export default ContactForm;
 
 ContactForm.propTypes = {
-  typeContactData: PropTypes.func.isRequired,
-  // addContactBtn: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
