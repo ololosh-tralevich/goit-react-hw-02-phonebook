@@ -13,7 +13,7 @@ export class App extends Component {
     filter: '',
   };
 
-  typeContactData(ev) {
+  typeContactData = (ev) => {
     const name = ev.target.name;
     this.setState({
       [name]: ev.target.value,
@@ -37,7 +37,7 @@ export class App extends Component {
     });
   }
 
-  deleteContactBtn(id) {
+  deleteContactBtn = (id) => {
     this.setState(prevState => {
       return {
         contacts: prevState.contacts.filter(
@@ -52,16 +52,16 @@ export class App extends Component {
       <div className={styles.mainContainer}>
         <div className={styles.contactContainer}>
           <ContactForm
-            typeContactData={this.typeContactData.bind(this)}
+            typeContactData={this.typeContactData}
             onSubmit={this.addContactBtn}
           />
         </div>
 
         <div className={styles.listContainer}>
           <h2>Contacts</h2>
-          <Filter typeContactData={this.typeContactData.bind(this)} />
+          <Filter typeContactData={this.typeContactData} />
           <ContactList
-            deleteContactBtn={this.deleteContactBtn.bind(this)}
+            deleteContactBtn={this.deleteContactBtn}
             contacts={this.state.contacts}
             filter={this.state.filter}
           />
