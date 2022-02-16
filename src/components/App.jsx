@@ -9,16 +9,8 @@ import styles from './app.module.css';
 
 export class App extends Component {
   state = {
-    // contacts: [],
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
-    name: '',
-    number: '',
   };
 
   typeContactData(ev) {
@@ -29,24 +21,27 @@ export class App extends Component {
   }
 
   addContactBtn() {
-    for (let contact of this.state.contacts) {
-      if (
-        contact.name === this.state.name ||
-        contact.number === this.state.number
-      ) {
-        alert(`${this.state.name} is already in your contacts`);
-        return;
-      }
-    }
+    const clone = this.state.contacts.find(
+      clone =>
+        clone.name === this.state.name || clone.number === this.state.number
+    );
     this.setState(prevState => {
-      return {
-        contacts: [
-          ...prevState.contacts,
-          { id: nanoid(), name: prevState.name, number: prevState.number },
-        ],
-      };
+      return clone
+        ? alert(`${this.state.name} is already in your contacts`)
+        : {
+            contacts: [
+              ...prevState.contacts,
+              { id: nanoid(), name: prevState.name, number: prevState.number },
+            ],
+          };
     });
   }
+
+  // findCloneContact(name) {
+  //   console.log(name)
+  //   console.log(this.state.contacts)
+  //   return  this.state.contact === name;
+  // }
 
   deleteContactBtn(ev) {
     this.setState(prevState => {
